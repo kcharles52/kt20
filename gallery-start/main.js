@@ -18,11 +18,23 @@ for(var i =0; i<images.length; i++){ //iterate through the images as you set an 
 	var imgSrc = images[i].getAttribute('src');// get the src attribute value of the current image
 	
 	images[i].onclick=function(e){ //Apply the onclick mouse event to the currently clicked image
-		var imgS = e.target.getAttribute('src'); 
-		displayedImage.setAttribute('src',imgS); // change the attribute of the 
+		//var imgS = e.target.getAttribute('src'); 
+		//displayedImage.setAttribute('src',imgS); // change the attribute of the 
+		displayedImage.setAttribute('src',e.target.getAttribute('src'));
 	}
 }
 
 
 /* Wiring up the Darken/Lighten button */
 
+btn.onclick=function(){
+if (btn.getAttribute('class')==='dark') {
+	btn.setAttribute('class','light');
+	btn.textContent ='Lighten';
+	overlay.style.backgroundColor ='rgba(0,0,0,0.5)';
+} else if(btn.getAttribute('class')==='light'){
+	btn.setAttribute('class','dark');
+	btn.textContent ='Darken';
+	overlay.style.backgroundColor ='rgba(0,0,0,0)';
+}
+}
