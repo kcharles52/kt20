@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Our superheroes</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+      <header>
+
+      </header>
+
+      <section>
+
+      </section>
+
+    <script>
+    var header = document.querySelector('header');
+    var section = document.querySelector('section');
+
+    var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+    var request = new XMLHttpRequest(); //creating a request from an object instance of XMLHttpRequest
+    request.open('GET',requestURL); //open a new request with the open method
+    request.responseType ='json'; //inform XHR the type of data to be returned
+    request.send();
+    
+    </script>
+  </body>
+</html>
