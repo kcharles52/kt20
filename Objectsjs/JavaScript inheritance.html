@@ -109,7 +109,7 @@
       Student.prototype = Object.create(Person.prototype);
       Student.prototype.constructor = Student;
       Student.prototype.greeting=function(){
-        alert("Yo! I\m" + this.name.first);
+        alert("Yo! I\m " + this.name.first);
       }
 
       var student1 = new Student('charles','opondo', 21, 'male',['movies', 'gaming']  );
