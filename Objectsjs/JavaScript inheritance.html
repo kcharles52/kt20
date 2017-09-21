@@ -23,7 +23,7 @@
         var code = input.value;
         para.textContent = eval(code);
       }
-      function Person(first, last, age, gender, interests) {
+      function Person(first, last, age, gender, interests) { //constarctor function
         this.name = {
           first,
           last
@@ -80,13 +80,15 @@
       }
       var person1 = new Person('Tammi', 'Smith', 17, 'female', ['music', 'skiing', 'kickboxing']);
 
-      function Teacher(first,last,age, gender, interests,subject){
-        Person.call(this,first,last,age,gender,interests);
+      //***************Teacher constructor**************
+      function Teacher(first,last,age, gender, interests,subject){ //Teacher constructor
+        Person.call(this,first,last,age,gender,interests); //call() used to call a function defined somewhere 
         this.subject = subject;
       }
+
       Teacher.prototype=Object.create(Person.prototype);
       Teacher.prototype.constructor = Teacher;
-      Teacher.prototype.greeting = function(){
+      Teacher.prototype.greeting = function(){ // new greeting function for the teacher
         var prefix;
         if(this.gender ==='male'|| this.gender==='Male' || this.gender==='m' || this.gender==='M'){
           prefix = 'Mr. ';
@@ -98,6 +100,19 @@
         alert('Hello. My name is '+prefix+ ' '+this.name.last +', and I teach '+this.subject+'.');
       };
 
-      var teacher1 = new Teacher('Dave', 'Griffiths',31,'male',['football','cookkery'],'mathematics');
+      var teacher1 = new Teacher('Dave', 'Griffiths',31,'male',['football','cookkery'],'mathematics'); //object instance of Teacher
+
+      //***************Student constructor**************
+      function Student(first,last,age,gender,interests){
+         Person.call(this,first,last,age,gender,interests); //call() used to call the person function defined at the top
+      }
+      Student.prototype = Object.create(Person.prototype);
+      Student.prototype.constructor = Student;
+      Student.prototype.greeting=function(){
+        alert("Yo! I\m" + this.name.first);
+      }
+
+      var student1 = new Student('charles','opondo', 21, 'male',['movies', 'gaming']  );
+
     </script>
 </html>
