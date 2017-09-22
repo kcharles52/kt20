@@ -31,32 +31,35 @@
     
     request.onload =function(){ // waiting for the response to take place
       var superHeroes = request.response;// store the response in a variable superHeroes
-      populateHeader(superHeroes);// function to fill the header of the document
+      populateHeader(superHeroes);// function to fill the header of the document *NB superHeroes in the function call replaces jsonObj
       showHeroes(superHeroes); // function to fill the section
     }
 
     //function to fill data in the header section of the document
-    function populateHeader(jsonObj) {
+    function populateHeader(jsonObj) { //jsonObj is just a function parameter that will be replaced when the function is called
     var myH1 = document.createElement('h1');
     myH1.textContent = jsonObj['squadName'];
     header.appendChild(myH1);
 
     var myPara = document.createElement('p');
-    myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + header.appendChild(myPara);
+    myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + '   Formed: '+jsonObj['formed'];
+    header.appendChild(myPara);
   }
 
   //function to fill data in the section of the document
   function showHeroes(jsonObj) {
   var heroes = jsonObj['members'];
-      
+    
+    //*****create a card for each hero********  
   for (var i = 0; i < heroes.length; i++) {
+    //create elemets needed
     var myArticle = document.createElement('article');
     var myH2 = document.createElement('h2');
     var myPara1 = document.createElement('p');
     var myPara2 = document.createElement('p');
     var myPara3 = document.createElement('p');
     var myList = document.createElement('ul');
-
+    //fill the elements with the data from the heroes ref
     myH2.textContent = heroes[i].name;
     myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
     myPara2.textContent = 'Age: ' + heroes[i].age;
@@ -69,12 +72,14 @@
       myList.appendChild(listItem);
     }
 
+    //attach the elements to the artcle element using appendChild()
     myArticle.appendChild(myH2);
     myArticle.appendChild(myPara1);
     myArticle.appendChild(myPara2);
     myArticle.appendChild(myPara3);
     myArticle.appendChild(myList);
 
+    //attach the article element to the section 
     section.appendChild(myArticle);
   }
 }
