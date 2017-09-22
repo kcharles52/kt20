@@ -29,13 +29,13 @@
     request.responseType ='json'; //inform XHR the type of data to be returned
     request.send();
     
-    request.onload =function(){
-      var superHeroes = request.response;
-      populateHeader(superHeroes);
-      showHeroes(superHeroes);
+    request.onload =function(){ // waiting for the response to take place
+      var superHeroes = request.response;// store the response in a variable superHeroes
+      populateHeader(superHeroes);// function to fill the header of the document
+      showHeroes(superHeroes); // function to fill the section
     }
 
-
+    //function to fill data in the header section of the document
     function populateHeader(jsonObj) {
     var myH1 = document.createElement('h1');
     myH1.textContent = jsonObj['squadName'];
@@ -45,6 +45,7 @@
     myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + header.appendChild(myPara);
   }
 
+  //function to fill data in the section of the document
   function showHeroes(jsonObj) {
   var heroes = jsonObj['members'];
       
