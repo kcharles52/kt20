@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var genreSchema = new Schema({
-    genre:{type:string,required:true, minlength:3,maxlength:100}
+    genre:{type:String,required:true, minlength:3,maxlength:100}
 
 });
 
