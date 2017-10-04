@@ -8,7 +8,16 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var app = express();
+var app = express(); //declaring express application object
+
+//setting up mongoose connection
+var mongoose = require('mongoose');
+var mongoDB = 'http://127.0.0.1:27017';
+
+mongoose.connect(mongoDB,{useMongoClient:true});
+
+var db = mongoose.connection;
+db.on('error',console.error.bind(console,'MongoDB connection error: '));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
