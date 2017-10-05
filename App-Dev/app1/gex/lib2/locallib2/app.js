@@ -5,8 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//site routes
 var index = require('./routes/index');
 var users = require('./routes/users');
+var catalog = require('./routes/catalog');  //Import routes for "catalog" area of site
 
 var app = express(); //declaring express application object
 
@@ -33,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/catalog',catalog); //add catalog routes
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
