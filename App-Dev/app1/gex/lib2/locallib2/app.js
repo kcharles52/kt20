@@ -14,7 +14,8 @@ var app = express(); //declaring express application object
 
 //setting up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'http://127.0.0.1:27017';
+//var mongoDB = 'http://127.0.0.1:27017';
+var mongoDB = 'mongodb://127.0.0.1:27017';
 
 mongoose.connect(mongoDB,{useMongoClient:true});
 
